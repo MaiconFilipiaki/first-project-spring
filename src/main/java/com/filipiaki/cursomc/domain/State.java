@@ -1,5 +1,8 @@
 package com.filipiaki.cursomc.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,6 +18,8 @@ public class State implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+
+    @JsonBackReference
     @OneToMany(mappedBy = "state")
     private List<City> citys = new ArrayList<>();
 
